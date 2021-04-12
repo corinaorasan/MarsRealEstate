@@ -24,7 +24,7 @@ import retrofit2.http.GET
 
 private const val BASE_URL = "https://mars.udacity.com/"
 
-private val retrofit=Retrofit.Builder()
+private val retrofit = Retrofit.Builder()
         .addConverterFactory(MoshiConverterFactory.create())
         .baseUrl(BASE_URL)
         .build()
@@ -33,4 +33,10 @@ interface MarsApiService {
     @GET("realstate")
     fun getProperties():
             Call<String>
+}
+
+object MarsApi {
+    val retrofitService: MarsApiService by lazy {
+        retrofit.create(MarsApiService::class.java)
+    }
 }
