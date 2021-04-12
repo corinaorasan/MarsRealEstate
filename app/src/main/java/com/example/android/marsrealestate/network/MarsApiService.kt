@@ -17,4 +17,11 @@
 
 package com.example.android.marsrealestate.network
 
+import retrofit2.Retrofit
+import retrofit2.converter.moshi.MoshiConverterFactory
 private const val BASE_URL = "https://mars.udacity.com/"
+
+private val retrofit=Retrofit.Builder()
+        .addConverterFactory(MoshiConverterFactory.create())
+        .baseUrl(BASE_URL)
+        .build()
